@@ -95,7 +95,7 @@ class AssetsMapPlugin {
         });
       }
 
-      !this.options.assets && delete results.auxiliaryFiles;
+      !this.options.assets && delete results.assets;
       !this.options.auxiliaryFiles && delete results.auxiliaryFiles;
       const content = this.options.formatter(results);
       fs.writeFileSync(this.options.output, content);
