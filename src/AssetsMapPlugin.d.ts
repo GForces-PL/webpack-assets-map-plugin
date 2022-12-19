@@ -18,7 +18,7 @@ type AssetsMapPluginOptions = {
 }
 
 declare class AssetsMapPlugin {
-  constructor(options: Partial<AssetsMapPluginOptions> = {});
+  constructor(options?: Partial<AssetsMapPluginOptions>);
 }
 
-export {};
+export = AssetsMapPlugin;
