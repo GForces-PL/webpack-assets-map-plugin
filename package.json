@@ -1,0 +1,55 @@
+{
+  "name": "@gforces/webpak-assets-map-plugin",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Michal Felski <michal.felski@gforces.pl>",
+  "description": "Exports map of webpack compilation entrypoints and assets",
+  "type": "commonjs",
+  "main": "AssetsMapPlugin.js",
+  "types": "AssetsMapPlugin.d.ts",
+  "scripts": {
+    "build:js": "npx babel src/AssetsMapPlugin.js -o AssetsMapPlugin.js",
+    "build:copy": "npx cpy src/AssetsMapPlugin.d.ts . --flat",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "webpack5",
+    "plugin",
+    "assets",
+    "map",
+    "entrypoints",
+    "json"
+  ],
+  "files": [
+    "AssetsMapPlugin.js",
+    "AssetsMapPlugin.d.ts",
+    "package.json",
+    "LICENCE"
+  ],
+  "devDependencies": {
+    "@babel/cli": "*",
+    "@babel/preset-env": "*",
+    "@types/node": "*",
+    "@types/webpack": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "cpy-cli": "*",
+    "eslint": "*",
+    "eslint-config-google": "*",
+    "typescript": "*"
+  },
+  "peerDependencies": {
+    "webpack": "^5"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GForces-PL/webpak-assets-map-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GForces-PL/webpak-assets-map-plugin/issues"
+  },
+  "homepage": "https://github.com/GForces-PL/webpak-assets-map-plugin#readme"
+}
