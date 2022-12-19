@@ -1,6 +1,6 @@
 {
   "name": "@gforces/webpak-assets-map-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "Michal Felski <michal.felski@gforces.pl>",
   "description": "Exports map of webpack compilation entrypoints and assets",
@@ -8,10 +8,11 @@
   "main": "AssetsMapPlugin.js",
   "types": "AssetsMapPlugin.d.ts",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build:module": "npx babel src/AssetsMapPlugin.js -o AssetsMapPlugin.js",
     "build:types": "npx cpy src/AssetsMapPlugin.d.ts . --flat",
     "build": "npm-run-all build:*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish": "npm run build && npm publish --access public"
   },
   "keywords": [
     "webpack",
