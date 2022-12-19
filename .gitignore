@@ -1,2 +1,3 @@
 /AssetsMapPlugin.*
 node_modules
+*.tgz
