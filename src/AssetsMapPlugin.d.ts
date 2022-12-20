@@ -2,6 +2,9 @@ type AssetsMapPluginResults = {
   entrypoints: {
     [name: string]: string[];
   }
+  dependencies?: {
+    [name: string]: string[];
+  }
   assets?: {
     [source: string]: string;
   }
@@ -9,11 +12,12 @@ type AssetsMapPluginResults = {
 };
 
 type AssetsMapPluginOptions = {
-  output: string;
-  formatter: (output: AssetsMapPluginResults) => string;
-  clean: boolean;
   assets: boolean;
   auxiliaryFiles: boolean;
+  clean: boolean;
+  dependencies: boolean;
+  formatter: (output: AssetsMapPluginResults) => string;
+  output: string;
   rootPath: string;
 }
 
