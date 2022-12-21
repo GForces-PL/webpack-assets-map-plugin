@@ -8,7 +8,6 @@ const path = require('path');
 /**
  * @typedef {Object} AssetsMapPluginResults
  * @property {Object.<string, string[]>} entrypoints
- * @property {Object.<string, string[]>} dependencies
  * @property {Object.<string, string> | undefined} assets
  * @property {string[] | undefined} auxiliaryFiles
  */
@@ -21,13 +20,12 @@ const path = require('path');
 
 /**
  * @typedef {Object} AssetsMapPluginOptions
-* @property {boolean} assets
-* @property {boolean} auxiliaryFiles
-* @property {boolean} clean
-* @property {boolean} dependencies
-* @property {Formatter} formatter
-* @property {string} output
-* @property {string} rootPath
+ * @property {boolean} assets
+ * @property {boolean} auxiliaryFiles
+ * @property {boolean} clean
+ * @property {Formatter} formatter
+ * @property {string} output
+ * @property {string} rootPath
  */
 
 /** @type {AssetsMapPluginOptions} */
@@ -35,7 +33,6 @@ const defaultOptions = {
   assets: true,
   auxiliaryFiles: false,
   clean: false,
-  dependencies: true,
   formatter: JSON.stringify,
   output: 'assetsMap.json',
   rootPath: '',
@@ -59,16 +56,15 @@ class AssetsMapPlugin {
       /** @type {AssetsMapPluginResults} */
       const results = {
         entrypoints: {},
-        dependencies: {},
         assets: {},
         auxiliaryFiles: [],
       };
       compilation.entrypoints.forEach(entrypoint => {
-        results.dependencies[entrypoint.name] = [];
+        results.entrypoints[entrypoint.name] = [];
         entrypoint.options.dependOn?.forEach(/** @param {string} dependencyEntryPointName */ dependencyEntryPointName => {
-          results.dependencies[entrypoint.name].push(...this.getEntryPointFiles(compilation.entrypoints.get(dependencyEntryPointName)));
+          results.entrypoints[entrypoint.name].push(...this.getEntryPointFiles(compilation.entrypoints.get(dependencyEntryPointName)));
         });
-        results.entrypoints[entrypoint.name] = [...this.getEntryPointFiles(entrypoint)];
+        results.entrypoints[entrypoint.name].push(...this.getEntryPointFiles(entrypoint));
       });
       compilation.assetsInfo.forEach((info, file) => {
         if (info.sourceFilename) {
@@ -95,7 +91,7 @@ class AssetsMapPlugin {
         });
       }
 
-      ['assets', 'auxiliaryFiles', 'dependencies'].forEach(option => !this.options[option] && delete results[option]);
+      ['assets', 'auxiliaryFiles'].forEach(option => !this.options[option] && delete results[option]);
       const content = this.options.formatter(results);
       fs.writeFileSync(this.options.output, content);
     });

@@ -50,10 +50,6 @@ module.exports = {
   
   Include auxiliary files in output
 
-* __dependencies__ ```boolean``` (default: ```false```)
-  
-  Include entrypoints dependencies files in output
-
 * __rootPath__ ```string``` (default: webpack output path)
   
   The path to which all bundles, assets and auxiliary files will be relative. By default, all extracted files are relative to the webpack output path.
@@ -80,10 +76,6 @@ type AssetsMapPluginResults = {
 - **entrypoints**
   
   A map of entrypoints names to associated bundles. If you use content hashes in the output file names, they will also be included.
-
-- **dependencies**
-  
-  A map of entrypoints names to its dependencies.
 
 - **assets**
   
