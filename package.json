@@ -1,6 +1,6 @@
 {
   "name": "@gforces/webpak-assets-map-plugin",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "author": "Michal Felski <michal.felski@gforces.pl>",
   "description": "Exports map of webpack compilation entrypoints and assets",
