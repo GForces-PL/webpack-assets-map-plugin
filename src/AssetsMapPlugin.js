@@ -7,6 +7,7 @@ const path = require('path');
 
 /**
  * @typedef {Object} AssetsMapPluginResults
+ * @property {Number} buildTime
  * @property {Object.<string, string[]>} entrypoints
  * @property {Object.<string, string> | undefined} assets
  * @property {string[] | undefined} auxiliaryFiles
@@ -55,6 +56,7 @@ class AssetsMapPlugin {
     compiler.hooks.afterEmit.tap('AssetsMapPlugin', compilation => {
       /** @type {AssetsMapPluginResults} */
       const results = {
+        buildTime: 0,
         entrypoints: {},
         assets: {},
         auxiliaryFiles: [],
@@ -90,6 +92,8 @@ class AssetsMapPlugin {
             .forEach(file => fs.rmSync(`${dir}/${file.name}`));
         });
       }
+
+      results.buildTime = Date.now();
 
       ['assets', 'auxiliaryFiles'].forEach(option => !this.options[option] && delete results[option]);
       const content = this.options.formatter(results);

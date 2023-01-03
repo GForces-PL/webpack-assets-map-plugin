@@ -1,4 +1,5 @@
 type AssetsMapPluginResults = {
+  buildTime: number;
   entrypoints: {
     [name: string]: string[];
   }
