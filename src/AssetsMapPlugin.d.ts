@@ -13,6 +13,7 @@ type AssetsMapPluginOptions = {
   assets: boolean;
   auxiliaryFiles: boolean;
   clean: boolean;
+  entrypointsDependencies: boolean;
   formatter: (output: AssetsMapPluginResults) => string;
   output: string;
   rootPath: string;

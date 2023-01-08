@@ -34,6 +34,7 @@ const defaultOptions = {
   assets: true,
   auxiliaryFiles: false,
   clean: false,
+  entrypointsDependencies: true,
   formatter: JSON.stringify,
   output: 'assetsMap.json',
   rootPath: '',
@@ -63,9 +64,11 @@ class AssetsMapPlugin {
       };
       compilation.entrypoints.forEach(entrypoint => {
         results.entrypoints[entrypoint.name] = [];
-        entrypoint.options.dependOn?.forEach(/** @param {string} dependencyEntryPointName */ dependencyEntryPointName => {
-          results.entrypoints[entrypoint.name].push(...this.getEntryPointFiles(compilation.entrypoints.get(dependencyEntryPointName)));
-        });
+        if (this.options.entrypointsDependencies) {
+          entrypoint.options.dependOn?.forEach(/** @param {string} dependencyEntryPointName */ dependencyEntryPointName => {
+            results.entrypoints[entrypoint.name].push(...this.getEntryPointFiles(compilation.entrypoints.get(dependencyEntryPointName)));
+          });
+        }
         results.entrypoints[entrypoint.name].push(...this.getEntryPointFiles(entrypoint));
       });
       compilation.assetsInfo.forEach((info, file) => {
