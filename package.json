@@ -1,6 +1,6 @@
 {
-  "name": "@gforces/webpak-assets-map-plugin",
-  "version": "0.0.7",
+  "name": "@gforces/webpack-assets-map-plugin",
+  "version": "0.0.9",
   "license": "MIT",
   "author": "Michal Felski <michal.felski@gforces.pl>",
   "description": "Exports map of webpack compilation entrypoints and assets",
@@ -49,10 +49,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GForces-PL/webpak-assets-map-plugin.git"
+    "url": "git+https://github.com/GForces-PL/webpack-assets-map-plugin.git"
   },
   "bugs": {
-    "url": "https://github.com/GForces-PL/webpak-assets-map-plugin/issues"
+    "url": "https://github.com/GForces-PL/webpack-assets-map-plugin/issues"
   },
-  "homepage": "https://github.com/GForces-PL/webpak-assets-map-plugin#readme"
+  "homepage": "https://github.com/GForces-PL/webpack-assets-map-plugin#readme"
 }

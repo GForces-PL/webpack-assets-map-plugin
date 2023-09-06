@@ -7,7 +7,7 @@ Using the plugin comes down to registering an instance in the webpack configurat
 ## Install
 
 ```sh
-npm install --save-dev @gforces/webpak-assets-map-plugin
+npm install --save-dev @gforces/webpack-assets-map-plugin
 ```
 
 ## Add to webpack config
